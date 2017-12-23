@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<package >
+	<metadata>
+		<id>Shuttle.Core.MSBuild</id>
+		<version>{semver}</version>
+		<authors>Eben Roux</authors>
+		<owners>Eben Roux</owners>
+		<licenseUrl>https://github.com/shuttle/Shuttle.Core.MSBuild/raw/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/shuttle/Shuttle.Core.MSBuild</projectUrl>
+		<iconUrl>https://raw.githubusercontent.com/Shuttle/Shuttle.Core.MSBuild/master/.media/logo.png</iconUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Contains MSBuild tasks (VS2017+) used in building Shuttle solutions.</description>
+		<releaseNotes/>
+		<copyright>Copyright (c) {year}, Eben Roux</copyright>
+		<tags>msbuild shuttle</tags>
+	</metadata>
+	<files>
+		<file src="tools\**\*.*" target="tools" />
+		<file src="content\**\*.*" target="content" />
+	</files>
+</package>
