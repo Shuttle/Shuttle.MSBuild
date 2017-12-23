@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="files\packages.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Moq" Version="4.7.145" />
     <PackageReference Include="NUnit" Version="3.9.0" />
   </ItemGroup>

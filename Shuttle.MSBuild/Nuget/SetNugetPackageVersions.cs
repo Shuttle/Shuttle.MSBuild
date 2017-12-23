@@ -12,16 +12,16 @@ namespace Shuttle.MSBuild.Nuget
 			var openTag = string.IsNullOrEmpty(OpenTag) ? "{" : OpenTag;
 			var closeTag = string.IsNullOrEmpty(CloseTag) ? "}" : CloseTag;
 
-			var packageFolderPath = PackageFolder.ItemSpec;
+			var projectFilePath = ProjectFile.ItemSpec;
 
-			if (!Path.IsPathRooted(packageFolderPath))
+			if (!Path.IsPathRooted(projectFilePath))
 			{
-				packageFolderPath = Path.GetFullPath(packageFolderPath);
+			    projectFilePath = Path.GetFullPath(projectFilePath);
 			}
 
-			if (!Directory.Exists(packageFolderPath))
+			if (!File.Exists(projectFilePath))
 			{
-				Log.LogError("PackageFolder '{0}' does not exist.", packageFolderPath);
+				Log.LogError("ProjectFile '{0}' does not exist.", projectFilePath);
 
 				return false;
 			}
@@ -36,22 +36,17 @@ namespace Shuttle.MSBuild.Nuget
 				}
 				else
 				{
-					Log.LogWarning("TaggedFile '{0}' does not exist.", file.ItemSpec);
+					Log.LogWarning("File '{0}' does not exist.", file.ItemSpec);
 				}
 			}
 
-			var packageFolder = new PackageFolder(packageFolderPath);
+			var projectFile = new ProjectFile(projectFilePath);
 
-			foreach (var message in packageFolder.Messages)
-			{
-				Log.LogMessage(message);
-			}
-
-			foreach (var package in packageFolder.Packages)
+			foreach (var package in projectFile.Packages)
 			{
 				foreach (var file in files)
 				{
-					File.WriteAllText(file, File.ReadAllText(file).Replace(string.Format("{0}{1}-version{2}", openTag, package.Name, closeTag), package.Version));
+					File.WriteAllText(file, File.ReadAllText(file).Replace($"{openTag}{package.Name}-version{closeTag}", package.Version));
 				}
 			}
 
@@ -62,7 +57,7 @@ namespace Shuttle.MSBuild.Nuget
 		public ITaskItem[] Files { get; set; }
 
 		[Required]
-		public ITaskItem PackageFolder { get; set; }
+		public ITaskItem ProjectFile { get; set; }
 
 		public string OpenTag { get; set; }
 		public string CloseTag { get; set; }

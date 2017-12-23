@@ -6,41 +6,33 @@ using System.Text.RegularExpressions;
 
 namespace Shuttle.MSBuild.Nuget
 {
-	public class PackageFolder
+	public class ProjectFile
 	{
-		private static readonly Regex dependencyExpression =
-			new Regex(@"(?<package>.*?)\.(?<version>(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?<revision>\.\d+)?)[-\.]?(?<prerelease>.*)",
+		private static readonly Regex PackageReferenceExpression =
+			new Regex(@"PackageReference\s*Include=""(?<package>.*?)""\s*Version=""(?<version>.*?)""",
 			          RegexOptions.IgnoreCase);
 
 		private readonly List<Package> _packages = new List<Package>();
-		private readonly List<string> _messages = new List<string>();
 
-		public PackageFolder(string packageFolder)
+		public ProjectFile(string path)
 		{
-			foreach (var directory in Directory.GetDirectories(packageFolder))
-			{
-				var directoryName = Path.GetFileName(directory);
+		    if (!File.Exists(path))
+		    {
+                throw new InvalidOperationException($"File '{path}' does not exist.");
+		    }
 
-				if (string.IsNullOrEmpty(directoryName))
-				{
-					continue;
-				}
+		    foreach (Match match in PackageReferenceExpression.Matches(File.ReadAllText(path)))
+		    {
+		        var packageName = match.Groups["package"];
+		        var packageVersion = match.Groups["version"];
 
-				var match = dependencyExpression.Match(directoryName);
+		        if (!packageName.Success || !packageVersion.Success)
+		        {
+		            continue;
+		        }
 
-				var packageName = match.Groups["package"];
-				var packageVersion = match.Groups["version"];
-
-				if (!packageName.Success || !packageVersion.Success)
-				{
-					_messages.Add(string.Format(
-						"Package folder name '{0}' does not match the expected NuGet package structure.", directoryName));
-
-					continue;
-				}
-
-				AddPackage(new Package(packageName.Value, packageVersion.Value));
-			}
+		        AddPackage(new Package(packageName.Value, packageVersion.Value));
+		    }
 		}
 
 		public void AddPackage(Package package)
@@ -61,14 +53,6 @@ namespace Shuttle.MSBuild.Nuget
 			}
 		}
 
-		public IEnumerable<Package> Packages
-		{
-			get { return new ReadOnlyCollection<Package>(_packages); }
-		}
-
-		public IEnumerable<string> Messages
-		{
-			get { return new ReadOnlyCollection<string>(_messages); }
-		}
+		public IEnumerable<Package> Packages => new ReadOnlyCollection<Package>(_packages);
 	}
 }

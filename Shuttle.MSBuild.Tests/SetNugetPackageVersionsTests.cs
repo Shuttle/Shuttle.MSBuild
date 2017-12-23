@@ -19,7 +19,7 @@ namespace Shuttle.MSBuild.Tests
                 BuildEngine = new Mock<IBuildEngine>().Object,
                 OpenTag = "%",
                 CloseTag = "%",
-                PackageFolder = new TaskItem(FilePathExtensions.BasePath(@".\packages")),
+                ProjectFile = new TaskItem(FilePathExtensions.BasePath(@".\files\packages.csproj")),
                 Files = new List<ITaskItem>
                 {
                     new TaskItem(FilePathExtensions.BasePath(@".\files\set-nuget-depencency-versions-custom-test.txt"))
@@ -47,7 +47,7 @@ namespace Shuttle.MSBuild.Tests
             var task = new SetNugetPackageVersions
             {
                 BuildEngine = new Mock<IBuildEngine>().Object,
-                PackageFolder = new TaskItem(FilePathExtensions.BasePath(@".\packages")),
+                ProjectFile = new TaskItem(FilePathExtensions.BasePath(@".\files\packages.csproj")),
                 Files = new List<ITaskItem>
                 {
                     new TaskItem(FilePathExtensions.BasePath(@".\files\set-nuget-depencency-versions-default-test.txt"))
