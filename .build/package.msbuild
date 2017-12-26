@@ -6,6 +6,6 @@
 
     <MSBuild Projects="..\Shuttle.MSBuild.VSIX\Shuttle.MSBuild.VSIX.csproj" Targets="Rebuild" Properties="Configuration=Debug;Platform=AnyCPU;" />
 
-    <Copy SourceFiles="..\Shuttle.MSBuild.VSIX\bin\Debug\Shuttle.MSBuild.vsix" DestinationFolder=".\deployment" SkipUnchangedFiles="false" />
+    <Copy SourceFiles="..\Shuttle.MSBuild.VSIX\bin\Debug\Shuttle.MSBuild.VSIX.vsix" DestinationFolder=".\deployment" SkipUnchangedFiles="false" />
   </Target>
 </Project>

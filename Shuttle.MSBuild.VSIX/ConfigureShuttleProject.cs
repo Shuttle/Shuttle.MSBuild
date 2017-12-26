@@ -301,13 +301,10 @@ using System.Runtime.InteropServices;
 
             File.Copy(Path.Combine(_extensionPath, ".build", sourceFileName), targetPath);
 
-            var packageAssembly = project.Name;
-            var packageName = packageAssembly;
-
+            var packageName = project.Name;
 
             File.WriteAllText(targetPath, File.ReadAllText(targetPath)
-                .Replace("{package-name}", packageName)
-                .Replace("{package-assembly}", packageAssembly));
+                .Replace("{package-name}", packageName));
         }
     }
 }

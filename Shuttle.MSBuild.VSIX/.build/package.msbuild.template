@@ -1,14 +1,13 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Deploy" ToolsVersion="4.0">
 	<PropertyGroup>
 		<DeploymentFolder>deployment</DeploymentFolder>
-		<PackageAssembly>{package-assembly}</PackageAssembly>
 		<PackageName>{package-name}</PackageName>
 	</PropertyGroup>
 
 	<Import Project="Shuttle.MSBuild.targets" />
 
 	<ItemGroup>
-		<ProjectReference Include="..\$(PackageAssembly)\$(PackageAssembly).csproj" />
+		<ProjectReference Include="..\$(PackageName).csproj" />
 	</ItemGroup>
 
 	<Target Name="Build">
@@ -45,7 +44,7 @@
 
 	<Target Name="Package" DependsOnTargets="SemanticVersion;Build">
 		<ItemGroup>
-			<NugetBinaries Include="..\$(PackageAssembly)\bin\debug\**\$(PackageAssembly).dll" />
+			<NugetBinaries Include="..\$(PackageName)\bin\debug\**\$(PackageName).dll" />
 		</ItemGroup>
 
 		<Copy SourceFiles="package.nuspec" DestinationFolder="$(DeploymentFolder)\nuget\" SkipUnchangedFiles="false" />
@@ -53,7 +52,7 @@
 
 		<RegexFindAndReplace Files="$(DeploymentFolder)\nuget\package.nuspec" FindExpression="\{semver\}" ReplacementText="$(SemanticVersion)" />
 		<RegexFindAndReplace Files="$(DeploymentFolder)\nuget\package.nuspec" FindExpression="\{year\}" ReplacementText="$([System.DateTime]::Now.ToString(`yyyy`))" />
-		<SetNugetPackageVersions Files="$(DeploymentFolder)\nuget\package.nuspec" PackageFolder="..\packages" />
+		<SetNugetPackageVersions Files="$(DeploymentFolder)\nuget\package.nuspec" ProjectFile="..\$(PackageName).csproj" />
 
 		<Exec Command="nuget pack $(DeploymentFolder)\nuget\package.nuspec -OutputDirectory $(DeploymentFolder)\nuget -NoPackageAnalysis" />
 
