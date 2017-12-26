@@ -23,7 +23,7 @@
 		<Error Text="Please enter a version number." Condition="$(SemanticVersion) == ''" />
 
 		<ItemGroup>
-			<AssemblyInfoFiles Include="..\**\*AssemblyInfo.cs" Exclude="..\*.Tests\**\*AssemblyInfo.cs"/>
+			<AssemblyInfoFiles Include="..\Properties\AssemblyInfo.cs" />
 		</ItemGroup>
 
 		<RegexFindAndReplace Files="@(AssemblyInfoFiles)" FindExpression="AssemblyInformationalVersion\s*\(\s*&quot;.*&quot;\s*\)" ReplacementText="AssemblyInformationalVersion(&quot;$(SemanticVersion)&quot;)" />
@@ -44,7 +44,7 @@
 
 	<Target Name="Package" DependsOnTargets="SemanticVersion;Build">
 		<ItemGroup>
-			<NugetBinaries Include="..\$(PackageName)\bin\debug\**\$(PackageName).dll" />
+			<NugetBinaries Include="..\bin\debug\**\$(PackageName).dll" />
 		</ItemGroup>
 
 		<Copy SourceFiles="package.nuspec" DestinationFolder="$(DeploymentFolder)\nuget\" SkipUnchangedFiles="false" />
