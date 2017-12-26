@@ -1,14 +1,14 @@
-﻿namespace Shuttle.MSBuild.Nuget
+﻿namespace Shuttle.MSBuild
 {
-	public class Package
-	{
-		public Package(string name, string version)
-		{
-			Name = name;
-			Version = version;
-		}
+    public class NugetPackage
+    {
+        public NugetPackage(string name, string version)
+        {
+            Name = name;
+            Version = version;
+        }
 
-		public string Name { get; private set; }
-		public string Version { get; private set; }
-	}
+        public string Name { get; }
+        public string Version { get; }
+    }
 }

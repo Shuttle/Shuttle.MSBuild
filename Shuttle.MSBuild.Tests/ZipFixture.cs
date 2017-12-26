@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace Shuttle.MSBuild.Tests
 {
 	[TestFixture]
-	public class ZipTests
+	public class ZipFixture
 	{
 		[Test]
 		public void Should_be_able_to_create_an_archive()

@@ -3,7 +3,7 @@ using System.IO;
 using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 
-namespace Shuttle.MSBuild.Nuget
+namespace Shuttle.MSBuild
 {
 	public class SetNugetPackageVersions : Task
 	{

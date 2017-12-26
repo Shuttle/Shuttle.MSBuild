@@ -4,15 +4,15 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Text.RegularExpressions;
 
-namespace Shuttle.MSBuild.Nuget
+namespace Shuttle.MSBuild
 {
 	public class ProjectFile
 	{
 		private static readonly Regex PackageReferenceExpression =
-			new Regex(@"PackageReference\s*Include=""(?<package>.*?)""\s*Version=""(?<version>.*?)""",
+			new Regex(@"PackageReference\s*Include=""(?<package>.*?)""\s*Version=""(?<version>(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?<revision>\.\d+)?)[-\.]?(?<prerelease>.*)""",
 			          RegexOptions.IgnoreCase);
 
-		private readonly List<Package> _packages = new List<Package>();
+		private readonly List<NugetPackage> _packages = new List<NugetPackage>();
 
 		public ProjectFile(string path)
 		{
@@ -31,11 +31,11 @@ namespace Shuttle.MSBuild.Nuget
 		            continue;
 		        }
 
-		        AddPackage(new Package(packageName.Value, packageVersion.Value));
+		        AddPackage(new NugetPackage(packageName.Value, packageVersion.Value));
 		    }
 		}
 
-		public void AddPackage(Package package)
+		public void AddPackage(NugetPackage package)
 		{
 			var existing = _packages.Find(candidate => candidate.Name.Equals(package.Name, StringComparison.OrdinalIgnoreCase));
 
@@ -53,6 +53,6 @@ namespace Shuttle.MSBuild.Nuget
 			}
 		}
 
-		public IEnumerable<Package> Packages => new ReadOnlyCollection<Package>(_packages);
+		public IEnumerable<NugetPackage> Packages => new ReadOnlyCollection<NugetPackage>(_packages);
 	}
 }

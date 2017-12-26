@@ -8,7 +8,7 @@ using NUnit.Framework;
 namespace Shuttle.MSBuild.Tests
 {
 	[TestFixture]
-	public class RegexFindAndReplaceTests
+	public class RegexFindAndReplaceFixture
 	{
 		[Test]
 		public void Should_be_able_to_find_and_replace_text()

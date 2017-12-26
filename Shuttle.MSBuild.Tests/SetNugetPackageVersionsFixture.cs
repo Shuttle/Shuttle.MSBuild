@@ -4,12 +4,11 @@ using Microsoft.Build.Framework;
 using Microsoft.Build.Utilities;
 using Moq;
 using NUnit.Framework;
-using Shuttle.MSBuild.Nuget;
 
 namespace Shuttle.MSBuild.Tests
 {
     [TestFixture]
-    public class SetNugetPackageVersionsTests
+    public class SetNugetPackageVersionsFixture
     {
         [Test]
         public void Should_be_able_to_set_nuget_dependency_versions_using_custom_values()

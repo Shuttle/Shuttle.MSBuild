@@ -1,7 +1,8 @@
-Shuttle.Core.MSBuild
-====================
+# Shuttle.MSBuild.VSIX
 
-Does not add any references but rather adds the assemblies to the `Tools` NuGet package folder.
+VS2017+ extension used to configure Shuttle projects.
+
+## Shuttle.MSBuild
 
 This assembly contains the following MSBuild tasks that are used by [Shuttle](https://github.com/Shuttle) components:
 
