@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<DeploymentFolder>deployment</DeploymentFolder>
 		<PackageName>{package-name}</PackageName>
+    <PackageSource Condition="$(PackageSource) == ''">https://www.nuget.org</PackageSource>
 	</PropertyGroup>
 
 	<Import Project="Shuttle.MSBuild.targets" />
@@ -37,7 +38,7 @@
 				Properties="SemanticVersion=$(SemanticVersion)"
         />
 
-		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(PackageName).$(SemanticVersion).nupkg" />
+		<Exec Command="nuget push $(DeploymentFolder)\nuget\$(PackageName).$(SemanticVersion).nupkg -source $(PackageSource)" />
 		<Exec Command="git commit -a -m &quot;- v$(SemanticVersion)&quot;" />
 		<Exec Command="git push" />
 	</Target>
