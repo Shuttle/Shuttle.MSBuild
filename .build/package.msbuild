@@ -1,4 +1,4 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Package" ToolsVersion="4.0">
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Package" ToolsVersion="15">
   <Target Name="Package">
     <MSBuild Projects="..\Shuttle.MSBuild\Shuttle.MSBuild.csproj" Targets="Rebuild" Properties="Configuration=Debug;Platform=AnyCPU;" />
     <Copy SourceFiles="..\Shuttle.MSBuild\bin\Debug\Shuttle.MSBuild.dll" DestinationFolder="..\Shuttle.MSBuild.VSIX\.build" SkipUnchangedFiles="false" />

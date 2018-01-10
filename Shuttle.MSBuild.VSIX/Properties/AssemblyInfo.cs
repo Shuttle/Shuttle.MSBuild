@@ -1,33 +1,38 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// General Information about an assembly is controlled through the following 
-// set of attributes. Change these attribute values to modify the information
-// associated with an assembly.
-[assembly: AssemblyTitle("Shuttle.MSBuild")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Shuttle.MSBuild")]
-[assembly: AssemblyCopyright("")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+#if NET46
+[assembly: AssemblyTitle(".NET Framework 4.6")]
+#endif
 
-// Setting ComVisible to false makes the types in this assembly not visible 
-// to COM components.  If you need to access a type in this assembly from 
-// COM, set the ComVisible attribute to true on that type.
+#if NET461
+[assembly: AssemblyTitle(".NET Framework 4.6.1")]
+#endif
+
+#if NET462
+[assembly: AssemblyTitle(".NET Framework 4.6.2")]
+#endif
+
+#if NET47
+[assembly: AssemblyTitle(".NET Framework 4.7")]
+#endif
+
+#if NET471
+[assembly: AssemblyTitle(".NET Framework 4.7.1")]
+#endif
+
+#if NETCOREAPP2_0
+[assembly: AssemblyTitle(".NET Core 2.0")]
+#endif
+
+#if NETSTANDARD2_0
+[assembly: AssemblyTitle(".NET Standard 2.0")]
+#endif
+
+[assembly: AssemblyVersion("1.3.0.0")]
+[assembly: AssemblyCopyright("Copyright © Eben Roux 2017")]
+[assembly: AssemblyProduct("Shuttle.MSBuild.VSIX")]
+[assembly: AssemblyCompany("Shuttle")]
+[assembly: AssemblyConfiguration("Release")]
+[assembly: AssemblyInformationalVersion("1.3.0")]
 [assembly: ComVisible(false)]
-
-// Version information for an assembly consists of the following four values:
-//
-//      Major Version
-//      Minor Version 
-//      Build Number
-//      Revision
-//
-// You can specify all the values or you can default the Build and Revision Numbers 
-// by using the '*' as shown below:
-// [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]

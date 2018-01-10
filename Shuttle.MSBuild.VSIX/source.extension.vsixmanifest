@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
     <Metadata>
-        <Identity Id="Shuttle.MSBuild.bc5eed67-9ac4-47a6-904e-181aaa6bd946" Version="1.2" Language="en-US" Publisher="Eben Roux" />
+        <Identity Id="Shuttle.MSBuild.bc5eed67-9ac4-47a6-904e-181aaa6bd946" Version="1.3" Language="en-US" Publisher="Eben Roux" />
         <DisplayName>Shuttle.MSBuild.VSIX</DisplayName>
         <Description xml:space="preserve">Visual Studio 2017 extension used to configure a project for Shuttle development.</Description>
         <Icon>favicon-96x96.png</Icon>
