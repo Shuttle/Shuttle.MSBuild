@@ -113,7 +113,6 @@ using System.Runtime.InteropServices;
                             continue;
                         }
 
-
                         ConfigureBuildFolder(project);
                     }
                 }
@@ -209,7 +208,7 @@ using System.Runtime.InteropServices;
                         if (line.Contains("<TargetFrameworks>") || line.Contains("<TargetFramework>"))
                         {
                             result.AppendLine(
-                                "    <TargetFrameworks>net46;net461;net462;net47;net471;netstandard2.0;netcoreapp2.0</TargetFrameworks>");
+                                "    <TargetFrameworks>net46;net461;net462;net47;net471;netstandard2.0;netcoreapp2.0;netcoreapp2.1</TargetFrameworks>");
                             result.AppendLine(
                                 "    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>");
                         }
