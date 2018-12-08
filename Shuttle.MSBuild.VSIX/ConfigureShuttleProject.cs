@@ -14,28 +14,12 @@ namespace Shuttle.MSBuild.VSIX
             @"using System.Reflection;
 using System.Runtime.InteropServices;
 
-#if NET46
-[assembly: AssemblyTitle("".NET Framework 4.6"")]
-#endif
-
 #if NET461
 [assembly: AssemblyTitle("".NET Framework 4.6.1"")]
 #endif
 
-#if NET462
-[assembly: AssemblyTitle("".NET Framework 4.6.2"")]
-#endif
-
-#if NET47
-[assembly: AssemblyTitle("".NET Framework 4.7"")]
-#endif
-
-#if NET471
-[assembly: AssemblyTitle("".NET Framework 4.7.1"")]
-#endif
-
-#if NETCOREAPP2_0
-[assembly: AssemblyTitle("".NET Core 2.0"")]
+#if NETCOREAPP2_1
+[assembly: AssemblyTitle("".NET Core 2.1"")]
 #endif
 
 #if NETSTANDARD2_0
@@ -99,19 +83,6 @@ using System.Runtime.InteropServices;
                     if (project != null)
                     {
                         invoked = true;
-
-                        if (project.Kind != "{9A19103F-16F7-4668-BE54-9A1E7A4F7556}")
-                        {
-                            VsShellUtilities.ShowMessageBox(
-                                ServiceProvider,
-                                $"The project '{project.FullName}' does not appear to be a .Net Core project.",
-                                title,
-                                OLEMSGICON.OLEMSGICON_INFO,
-                                OLEMSGBUTTON.OLEMSGBUTTON_OK,
-                                OLEMSGDEFBUTTON.OLEMSGDEFBUTTON_FIRST);
-
-                            continue;
-                        }
 
                         ConfigureBuildFolder(project);
                     }
@@ -208,7 +179,7 @@ using System.Runtime.InteropServices;
                         if (line.Contains("<TargetFrameworks>") || line.Contains("<TargetFramework>"))
                         {
                             result.AppendLine(
-                                "    <TargetFrameworks>net46;net461;net462;net47;net471;netstandard2.0;netcoreapp2.0;netcoreapp2.1</TargetFrameworks>");
+                                "    <TargetFrameworks>net461;netstandard2.0;netcoreapp2.1</TargetFrameworks>");
                             result.AppendLine(
                                 "    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>");
                         }
