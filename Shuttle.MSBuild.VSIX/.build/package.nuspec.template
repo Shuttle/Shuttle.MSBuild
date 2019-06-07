@@ -5,9 +5,10 @@
 		<version>{semver}</version>
 		<authors>Eben Roux</authors>
 		<owners>Eben Roux</owners>
-		<licenseUrl>https://github.com/shuttle/{package-name}/raw/master/LICENSE</licenseUrl>
+    <license type="expression">BSD-3-Clause</license>
 		<projectUrl>https://github.com/shuttle/{package-name}</projectUrl>
 		<iconUrl>https://raw.githubusercontent.com/Shuttle/{package-name}/master/.media/logo.png</iconUrl>
+    <repository type="git" url="https://github.com/Shuttle/{package-name}.git" />
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description></description>
 		<releaseNotes/>
