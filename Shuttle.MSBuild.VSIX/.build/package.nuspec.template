@@ -12,7 +12,7 @@
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description></description>
 		<releaseNotes/>
-		<copyright>Copyright (c) {year}, Eben Roux</copyright>
+    <copyright>Copyright (c) {year}, Eben Roux</copyright>
 		<tags>shuttle</tags>
 	</metadata>
 </package>
