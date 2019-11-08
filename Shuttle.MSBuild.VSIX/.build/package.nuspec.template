@@ -7,7 +7,7 @@
 		<owners>Eben Roux</owners>
     <license type="expression">BSD-3-Clause</license>
 		<projectUrl>https://github.com/shuttle/{package-name}</projectUrl>
-		<iconUrl>https://raw.githubusercontent.com/Shuttle/{package-name}/master/.media/logo.png</iconUrl>
+    <icon>images\logo.png</icon>
     <repository type="git" url="https://github.com/Shuttle/{package-name}.git" />
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description></description>
@@ -15,4 +15,7 @@
     <copyright>Copyright (c) {year}, Eben Roux</copyright>
 		<tags>shuttle</tags>
 	</metadata>
+  <files>
+    <file src="..\..\..\..\.media\logo.png" target="images\" />
+  </files>
 </package>
