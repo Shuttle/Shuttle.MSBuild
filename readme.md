@@ -1,5 +1,7 @@
 # Shuttle.MSBuild.VSIX
 
+***This project is now obsolete*** and has been replaced by https://github.com/Shuttle/Shuttle.NuGetPackager
+
 VS2017+ extension used to configure Shuttle projects.
 
 ## Shuttle.MSBuild
